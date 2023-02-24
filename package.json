@@ -1,0 +1,24 @@
+{
+  "name": "dranik-2.0",
+  "version": "1.0.0",
+  "description": "Starter project for developing a static site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KennyNobody/dranik-2.0.git"
+  },
+  "keywords": [
+    "webpack",
+    "typescript",
+    "scss"
+  ],
+  "author": "Egor Badulin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KennyNobody/dranik-2.0/issues"
+  },
+  "homepage": "https://github.com/KennyNobody/dranik-2.0#readme"
+}
