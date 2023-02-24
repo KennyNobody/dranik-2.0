@@ -1,5 +1,5 @@
 {
-  "name": "dranik-2.0",
+  "name": "polosatik",
   "version": "1.0.0",
   "description": "Starter project for developing a static site",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KennyNobody/dranik-2.0.git"
+    "url": "git+https://github.com/KennyNobody/polosatik.git"
   },
   "keywords": [
     "webpack",
@@ -18,9 +18,9 @@
   "author": "Egor Badulin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KennyNobody/dranik-2.0/issues"
+    "url": "https://github.com/KennyNobody/polosatik/issues"
   },
-  "homepage": "https://github.com/KennyNobody/dranik-2.0#readme",
+  "homepage": "https://github.com/KennyNobody/polosatik#readme",
   "devDependencies": {
     "@types/node": "^18.14.1",
     "@types/webpack": "^5.28.0",
