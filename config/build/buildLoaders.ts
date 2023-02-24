@@ -7,7 +7,17 @@ export function buildLoaders(): webpack.RuleSetRule[] {
         exclude: /node_modules/,
     };
 
+    const slyleLoader = {
+        test: /\.s[ac]ss$/i,
+        use: [
+            "style-loader",
+            "css-loader",
+            "sass-loader",
+        ],
+    }
+
     return [
-        typeScriptLoader
+        typeScriptLoader,
+        slyleLoader
     ]
 }
