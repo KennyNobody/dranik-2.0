@@ -1,6 +1,8 @@
 import webpack from "webpack";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import autoprefixer from "autoprefixer";
 
-export function buildLoaders(): webpack.RuleSetRule[] {
+export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
     const typeScriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -10,8 +12,18 @@ export function buildLoaders(): webpack.RuleSetRule[] {
     const slyleLoader = {
         test: /\.s[ac]ss$/i,
         use: [
-            "style-loader",
-            "css-loader",
+            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+            'css-loader',
+            {
+                loader: 'postcss-loader',
+                options: {
+                    postcssOptions: {
+                        plugins: [
+                            'autoprefixer'
+                        ]
+                    }
+                },
+            },
             "sass-loader",
         ],
     }
