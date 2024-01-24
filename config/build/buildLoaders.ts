@@ -1,8 +1,9 @@
+import path from "path";
 import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import autoprefixer from "autoprefixer";
+import {BuildOptions} from "./types/config";
 
-export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
+export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const typeScriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -10,9 +11,9 @@ export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
     };
 
     const slyleLoader = {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss|css$/i,
         use: [
-            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+            options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             'css-loader',
             {
                 loader: 'postcss-loader',
@@ -28,8 +29,19 @@ export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
         ],
     }
 
+    const svgLoader = {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        options: {
+            extract: true,
+            spriteFilename: 'sprite-svg.svg',
+            publicPath: '/assets/',
+        }
+    }
+
     return [
         typeScriptLoader,
-        slyleLoader
+        slyleLoader,
+        svgLoader
     ]
 }
