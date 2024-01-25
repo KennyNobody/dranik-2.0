@@ -1,6 +1,6 @@
 import {App} from "./js/app/app";
 import "./style.scss";
-import './base/shared';
+import './main/shared';
 
 document.addEventListener('DOMContentLoaded', () => {
    new App();

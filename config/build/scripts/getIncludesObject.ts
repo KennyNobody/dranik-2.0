@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import { TemplateStringType } from "../config/build/plugins/buildPagesList";
+import { TemplateStringType } from "./buildPagesList";
 
 function getIncludesObject(directoryPath: string): TemplateStringType {
     const resolvedPath = path.resolve(__dirname, directoryPath);
 
-    const includes: { [key: string]: string } = {};
+    const includes: { [key: string]: Buffer } = {};
 
     function readFilesRecursively(dir: string) {
         const files = fs.readdirSync(dir);
@@ -19,10 +19,11 @@ function getIncludesObject(directoryPath: string): TemplateStringType {
             } else {
                 const extension = path.extname(file);
 
-                if (extension === '.html') {
-                    const relativePath = path.relative(resolvedPath, filePath);
-                    const filename = path.basename(relativePath, path.extname(relativePath));
-                    includes[filename] = fs.readFileSync(filePath, 'utf8');
+                if (extension === '.html' && file !=='index.html') {
+                    const relativePath = path.relative(directoryPath, filePath);
+                    const filename = path.parse(file).name;
+
+                    includes[filename] = fs.readFileSync(path.resolve('src', 'main', 'widgets', relativePath));
                 }
             }
         });

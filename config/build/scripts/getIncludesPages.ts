@@ -1,12 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { TemplatePageType } from "../config/build/plugins/buildPagesList";
+import { TemplatePageType } from "./buildPagesList";
 
 function getIncludesObject(directoryPath: string): TemplatePageType[] {
     const resolvedPath = path.resolve(__dirname, directoryPath);
     const includes: TemplatePageType[] = [];
 
-    function readFilesRecursively(dir: string, basePath: string) {
+    function readFilesRecursively(dir: string) {
         const files = fs.readdirSync(dir);
 
         files.forEach(file => {
@@ -14,12 +14,12 @@ function getIncludesObject(directoryPath: string): TemplatePageType[] {
             const fileStat = fs.statSync(filePath);
 
             if (fileStat.isDirectory()) {
-                readFilesRecursively(filePath, basePath);
+                readFilesRecursively(filePath);
             } else {
                 const extension = path.extname(file);
 
                 if (extension === '.html') {
-                    const relativePath = path.relative(basePath, filePath);
+                    const relativePath = path.relative(directoryPath, filePath);
 
                     includes.push({
                         name: file,
@@ -30,7 +30,7 @@ function getIncludesObject(directoryPath: string): TemplatePageType[] {
         });
     }
 
-    readFilesRecursively(resolvedPath, resolvedPath);
+    readFilesRecursively(resolvedPath);
 
     return includes;
 }
