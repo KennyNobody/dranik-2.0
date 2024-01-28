@@ -1,6 +1,6 @@
 class App {
     constructor() {
-       this.init();
+        this.init();
     }
 
     init = () => {

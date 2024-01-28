@@ -1,15 +1,6 @@
-@import "src/main/shared";
-
-body {
-    background-color: aliceblue;
-}
-
-.accent {
-    display: flex;
-    align-items: center;
-    background-color: red;
-    justify-content: center;
-}
+@import "./shared";
+@import "./widgets";
+@import "./pages";
 
 .icon {
     width: 20px;

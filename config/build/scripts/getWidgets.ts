@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
+import {BuildPaths} from "../types/config";
+import {TemplateStringType} from "./buildPagesList";
 
-const getWidgets = () => {
-    const resolvedPath = path.resolve('src/main/widgets');
-    let fileContents: Record<string, unknown> = {};
+const getWidgets = (paths: BuildPaths) => {
+    const resolvedPath = paths.htmlWidgets;
+    const fileContents: TemplateStringType = {};
 
     const readFilesRecursively = (dir: string) => {
         const files: string[] = fs.readdirSync(dir);

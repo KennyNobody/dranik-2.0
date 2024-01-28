@@ -1,7 +1,8 @@
 import {App} from "./js/app/app";
+import "./main/shared/libs/";
+import "./main/shared/sprite";
 import "./style.scss";
-import './main/shared';
 
 document.addEventListener('DOMContentLoaded', () => {
-   new App();
+    new App();
 });

@@ -1,13 +1,13 @@
 import path from "path";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import getIncludesObject from "../scripts/getIncludesObject";
 import getPageTemplates from "../scripts/getPageTemplates";
 import getIncludesPages from "../scripts/getIncludesPages";
 import {getWidgets} from "./getWidgets";
+import {BuildPaths} from "../types/config";
 
 export interface TemplateStringType {
-    [key: string]: Buffer;
+    [key: string]: string;
 }
 
 export interface TemplatePageType {
@@ -15,14 +15,13 @@ export interface TemplatePageType {
     path: string;
 }
 
-export function buildPagesList(): webpack.WebpackPluginInstance[] {
-    const pagesDirectory = path.resolve('src', 'main', 'pages');
-    const pages: TemplatePageType[] = getIncludesPages(pagesDirectory);
+export function buildPagesList(paths: BuildPaths): webpack.WebpackPluginInstance[] {
+    const pages: TemplatePageType[] = getIncludesPages(paths.htmlPages);
     const pagesArray: HtmlWebpackPlugin[] = [];
-    const widgets = getWidgets();
+    const widgets: TemplateStringType = getWidgets(paths);
 
     pages.forEach((el: TemplatePageType) => {
-        const item: HtmlWebpackPlugin = getPageTemplates(el, './src/main/pages/', widgets);
+        const item: HtmlWebpackPlugin = getPageTemplates(el, paths.htmlPages, widgets);
         pagesArray.push(item);
     })
 
