@@ -16,8 +16,11 @@ export function buildDevServer(options:BuildOptions): DevServerConfiguration {
             directory: path.join(__dirname, 'docs'),
         },
         watchFiles: [
-            "src/**/*.css",
-            "src/**/*.scss",
+            "./src/**/*.ts",
+            "./src/**/*.js",
+            "./src/**/*.css",
+            "./src/**/*.scss",
+            "./src/**/*.html",
         ],
     }
 }

@@ -10,11 +10,6 @@ export function buildPlugins({paths}: BuildOptions): webpack.WebpackPluginInstan
     const pages = buildPagesList();
 
     return [
-        // new HtmlWebpackPlugin({
-        //     template: paths.html,
-        //     inject: 'body'
-        // }),
-
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:4].css',
         }),
@@ -22,7 +17,7 @@ export function buildPlugins({paths}: BuildOptions): webpack.WebpackPluginInstan
         // @ts-ignore
         new SpriteLoaderPlugin(),
         new WatchExternalFilesPlugin({
-            files: ['./src/**/*.html'],
+            files: ['src/**/*.html'],
         }),
         ...pages,
     ];
