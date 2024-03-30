@@ -13,7 +13,7 @@ export function buildDevServer(options:BuildOptions): DevServerConfiguration {
         },
         compress: false,
         static: {
-            directory: path.join(__dirname, 'docs'),
+            directory: path.join(__dirname, 'dist'),
         },
         watchFiles: [
             "./src/**/*.ts",
