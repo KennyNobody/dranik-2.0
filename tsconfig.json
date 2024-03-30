@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./docs/",
+    "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",

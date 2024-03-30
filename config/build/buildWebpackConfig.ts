@@ -12,7 +12,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         mode,
         entry: paths.entry,
         output: {
-            filename: 'bundle.[contenthash:4].js',
+            filename: isDev ? 'bundle.[contenthash:4].js' :  'bundle.js' ,
             path: paths.build,
             clean: true
         },

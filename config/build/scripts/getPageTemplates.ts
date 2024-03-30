@@ -10,6 +10,7 @@ const createPluginInstance = (
         template: path + '/' + data.path,
         filename: data.name,
         inject: 'body',
+        minify: false,
         widgets,
     });
 }
